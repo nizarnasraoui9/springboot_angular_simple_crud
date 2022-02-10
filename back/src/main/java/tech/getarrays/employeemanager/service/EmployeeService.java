@@ -9,9 +9,11 @@ import tech.getarrays.employeemanager.repo.EmployeeRepo;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.UUID;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Transactional
+@Sl4j
 public class EmployeeService {
     private final EmployeeRepo employeeRepo;
 
@@ -21,6 +23,7 @@ public class EmployeeService {
     }
 
     public Employee addEmployee(Employee employee) {
+        log.info("adding employee...");
         employee.setEmployeeCode(UUID.randomUUID().toString());
         return employeeRepo.save(employee);
     }
